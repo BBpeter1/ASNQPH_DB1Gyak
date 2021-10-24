@@ -1,0 +1,43 @@
+ALTER TABLE Gyarto ADD irsz CHAR (4);
+ALTER TABLE Gyarto ADD varos CHAR (40);
+ALTER TABLE Gyarto ADD utca CHAR (100);
+
+MariaDB [adatbazis]> DESCRIBE GYARTO;
++-----------+-----------+------+-----+---------+-------+
+| Field     | Type      | Null | Key | Default | Extra |
++-----------+-----------+------+-----+---------+-------+
+| adoszam   | int(11)   | NO   | PRI | NULL    |       |
+| nev       | char(30)  | YES  |     | NULL    |       |
+| telephely | char(1)   | YES  |     | NULL    |       |
+| irsz      | char(4)   | YES  |     | NULL    |       |
+| varos     | char(40)  | YES  |     | NULL    |       |
+| utca      | char(100) | YES  |     | NULL    |       |
++-----------+-----------+------+-----+---------+-------+
+
+MariaDB [adatbazis]> CREATE TABLE ALKATRESZ (AKOD INT PRIMARY KEY, NEV CHAR(50));
+MariaDB [adatbazis]> CREATE TABLE EGYSEGEK(ARU INT, FOREIGN KEY (ARU) REFERENCES TERMEK (TKOD), DB INT CHECK (DB>0));
+MariaDB [adatbazis]> CREATE TABLE KOMPONENS(TERMEK INT,ALKATRESZ INT, FOREIGN KEY(TERMEK) REFERENCES TERMEK (TKOD), FOREIGN KEY (ALKATRESZ) REFERENCES ALKATRESZ(AKOD));
+
+MariaDB [adatbazis]> DESCRIBE ALKATRESZ;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| AKOD  | int(11)  | NO   | PRI | NULL    |       |
+| NEV   | char(50) | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+
+MariaDB [adatbazis]> DESCRIBE EGYSEGEK;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| ARU   | int(11) | YES  | MUL | NULL    |       |
+| DB    | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+
+MariaDB [adatbazis]> DESCRIBE KOMPONENS;
++-----------+---------+------+-----+---------+-------+
+| Field     | Type    | Null | Key | Default | Extra |
++-----------+---------+------+-----+---------+-------+
+| TERMEK    | int(11) | YES  | MUL | NULL    |       |
+| ALKATRESZ | int(11) | YES  | MUL | NULL    |       |
++-----------+---------+------+-----+---------+-------+

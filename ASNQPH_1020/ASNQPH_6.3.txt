@@ -1,0 +1,38 @@
+MariaDB [ADATBAZIS]> CREATE TABLE TANFOLYAM(TKOD INT PRIMARY KEY, AR INT, MEGNEVEZES CHAR, TIPUS CHAR);
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [ADATBAZIS]> CREATE TABLE RESZTVEVO(TAJSZAM INT PRIMARY KEY, LAKCIM CHAR, NEV CHAR);
+Query OK, 0 rows affected (0.022 sec)
+
+MariaDB [ADATBAZIS]> CREATE TABLE TR(TKOD INT, TAJSZAM INT, FOREIGN KEY(TKOD) REFERENCES TANFOLYAM(TKOD), FOREIGN KEY (TAJSZAM) REFERENCES RESZTVEVO (TAJSZAM), BEFIZETES INT);
+Query OK, 0 rows affected (0.019 sec)
+
+MariaDB [ADATBAZIS]> DESCRIBE TR;
++-----------+---------+------+-----+---------+-------+
+| Field     | Type    | Null | Key | Default | Extra |
++-----------+---------+------+-----+---------+-------+
+| TKOD      | int(11) | YES  | MUL | NULL    |       |
+| TAJSZAM   | int(11) | YES  | MUL | NULL    |       |
+| BEFIZETES | int(11) | YES  |     | NULL    |       |
++-----------+---------+------+-----+---------+-------+
+3 rows in set (0.013 sec)
+
+MariaDB [ADATBAZIS]> DESCRIBE RESZTVEVO;
++---------+---------+------+-----+---------+-------+
+| Field   | Type    | Null | Key | Default | Extra |
++---------+---------+------+-----+---------+-------+
+| TAJSZAM | int(11) | NO   | PRI | NULL    |       |
+| LAKCIM  | char(1) | YES  |     | NULL    |       |
+| NEV     | char(1) | YES  |     | NULL    |       |
++---------+---------+------+-----+---------+-------+
+3 rows in set (0.011 sec)
+
+MariaDB [ADATBAZIS]> DESCRIBE TANFOLYAM;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| TKOD       | int(11) | NO   | PRI | NULL    |       |
+| AR         | int(11) | YES  |     | NULL    |       |
+| MEGNEVEZES | char(1) | YES  |     | NULL    |       |
+| TIPUS      | char(1) | YES  |     | NULL    |       |
++------------+---------+------+-----+---------+-------+

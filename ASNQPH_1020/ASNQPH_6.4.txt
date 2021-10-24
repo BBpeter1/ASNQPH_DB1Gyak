@@ -1,0 +1,39 @@
+CREATE TABLE TERMEKEK( TKOD INT PRIMARY KEY, NEV VARCHAR(50) NOT NULL, EAR INT CHECK (EAR>0), KATEGORIA CHAR (20));
+Query OK, 0 rows affected (0.027 sec)
+
+MariaDB [ADATBAZIS]> INSERT INTO TERMEKEK VALUES(1,'LAPÁT',2000,'K1');
+Query OK, 1 row affected (0.008 sec)
+
+MariaDB [ADATBAZIS]> INSERT INTO TERMEKEK VALUES(2,'SEPRŰ',4000,'K1');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [ADATBAZIS]> INSERT INTO TERMEKEK VALUES(3,'MOSOGATÓ GÉL',1500,'K2');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [ADATBAZIS]> INSERT INTO TERMEKEK VALUES(4,'SZAPPAN',1000,'K2');
+Query OK, 1 row affected (0.007 sec)
+
+MariaDB [ADATBAZIS]> INSERT INTO TERMEKEK VALUES(5,'POHÁR',2400,'K3');
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [ADATBAZIS]> DESCRIBE TERMEKEK;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| TKOD      | int(11)     | NO   | PRI | NULL    |       |
+| NEV       | varchar(50) | NO   |     | NULL    |       |
+| EAR       | int(11)     | YES  |     | NULL    |       |
+| KATEGORIA | char(20)    | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.011 sec)
+
+MariaDB [ADATBAZIS]> SELECT * FROM TERMEKEK;
++------+--------------+------+-----------+
+| TKOD | NEV          | EAR  | KATEGORIA |
++------+--------------+------+-----------+
+|    1 | LAPÁT        | 2000 | K1        |
+|    2 | SEPRŰ        | 4000 | K1        |
+|    3 | MOSOGATÓ GÉL | 1500 | K2        |
+|    4 | SZAPPAN      | 1000 | K2        |
+|    5 | POHÁR        | 2400 | K3        |
++------+--------------+------+-----------+

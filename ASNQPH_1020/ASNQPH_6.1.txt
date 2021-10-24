@@ -1,0 +1,21 @@
+MariaDB [adatbazis]> CREATE TABLE GYARTO (adoszam INT PRIMARY KEY, nev CHAR (30), telephely CHAR);
+MariaDB [adatbazis]> CREATE TABLE TERMEK (TKOD INT PRIMARY KEY, NEV CHAR (50), EAR INT CHECK (EAR >0), GYARTO_ID INT, FOREIGN KEY (GYARTO_ID) REFERENCES gyarto(adoszam));
+
+MariaDB [adatbazis]> DESCRIBE TERMEK;
++-----------+----------+------+-----+---------+-------+
+| Field     | Type     | Null | Key | Default | Extra |
++-----------+----------+------+-----+---------+-------+
+| TKOD      | int(11)  | NO   | PRI | NULL    |       |
+| NEV       | char(50) | YES  |     | NULL    |       |
+| EAR       | int(11)  | YES  |     | NULL    |       |
+| GYARTO_ID | int(11)  | YES  | MUL | NULL    |       |
++-----------+----------+------+-----+---------+-------+
+
+MariaDB [adatbazis]> DESCRIBE GYARTO;
++-----------+----------+------+-----+---------+-------+
+| Field     | Type     | Null | Key | Default | Extra |
++-----------+----------+------+-----+---------+-------+
+| adoszam   | int(11)  | NO   | PRI | NULL    |       |
+| nev       | char(30) | YES  |     | NULL    |       |
+| telephely | char(1)  | YES  |     | NULL    |       |
++-----------+----------+------+-----+---------+-------+
