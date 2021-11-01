@@ -1,0 +1,31 @@
+MariaDB [gyak7]> CREATE TABLE TERMEKEK(TKOD INT PRIMARY KEY, NEV VARCHAR(50) NOT NULL, EAR INT CHECK(EAR>0),KATEGORIA CHAR (20));
+Query OK, 0 rows affected (0.019 sec)
+
+MariaDB [gyak7]> SHOW TABLES;
++-----------------+
+| Tables_in_gyak7 |
++-----------------+
+| termekek        |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [gyak7]> DESCRIBE TERMEKEK;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| TKOD      | int(11)     | NO   | PRI | NULL    |       |
+| NEV       | varchar(50) | NO   |     | NULL    |       |
+| EAR       | int(11)     | YES  |     | NULL    |       |
+| KATEGORIA | char(20)    | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.013 sec)
+
+MariaDB [gyak7]> INSERT INTO TERMEKEK VALUES(1,'FÉSŰ',500,'VALAMI');
+Query OK, 1 row affected (0.034 sec)
+
+MariaDB [gyak7]> DELETE FROM TERMEKEK WHERE EAR >10;
+Query OK, 1 row affected (0.009 sec)
+
+MariaDB [gyak7]> UPDATE TERMEKEK SET EAR = EAR * 0.90 WHERE KATEGORIA = 'Y';
+Query OK, 0 rows affected (0.007 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
